@@ -8,11 +8,39 @@
   <meta name="viewport" content="width=device-width">
   <!-- build:css styles/main.css -->
   <link rel="stylesheet" href="styles/bootstrap.css">
-  <link rel="stylesheet" href="styles/style.css"/>
+  <!--<link rel="stylesheet" href="styles/style.css"/>-->
   <!-- endbuild -->
   <link rel="stylesheet" href="../dist/index.css"/>
+  <style>
+    .calendar-period-timescale {
+      text-align: right;
+      float: right;
+    }
+    .calendar-container {
+      margin-left: auto;
+      margin-right: auto;
+      float: left;
+    }
+    .calendar-period {
+      width: 150px;
+      height: 150px;
+      float: left;
+      border: 1px solid #808080;
+    }
+    .calendar-row-even {
+      background-color: rgba(174,217,230,0.2);
+    }
+    .calendar-row-odd {
+      background-color: rgba(135,206,250,0.2);
+    }
+  </style>
 </head>
-<body ng-app="sample">
+<body class="container-fluid" ng-app="sample">
+<div class="row-fluid">
+  <h3>Real Calendars</h3>
+
+  <date-picker-calendar calendar-view="month"></date-picker-calendar>
+</div>
 <div class="row-fluid">
   <div class="span6">
     <h2>Calendar</h2>
@@ -22,23 +50,23 @@
 
       <h5>year</h5>
 
-      <div date-picker="start" view="year"></div>
+      <date-picker view="year"></date-picker>
 
       <h5>month</h5>
 
-      <div date-picker="start" view="month"></div>
+      <date-picker view="month"></date-picker>
 
       <h5>date</h5>
 
-      <div date-picker="start" view="date"></div>
+      <date-picker view="date"></date-picker>
 
       <h5>hours</h5>
 
-      <div date-picker="start" view="hours"></div>
+      <date-picker view="hours"></date-picker>
 
       <h5>minutes</h5>
 
-      <div date-picker="start" view="minutes"></div>
+      <date-picker view="minutes"></date-picker>
     </div>
 
 
@@ -47,23 +75,23 @@
 
       <h5>year</h5>
 
-      <div date-picker="start" min-view="year"></div>
+      <date-picker  min-view="year"></date-picker>
 
       <h5>month</h5>
 
-      <div date-picker="start" min-view="month"></div>
+      <date-picker min-view="month"></date-picker>
 
       <h5>date</h5>
 
-      <div date-picker="start" min-view="date"></div>
+      <date-picker min-view="date"></date-picker>
 
       <h5>hours</h5>
 
-      <div date-picker="start" min-view="hours"></div>
+      <date-picker min-view="hours"></date-picker>
 
       <h5>minutes</h5>
 
-      <div date-picker="start" min-view="minutes"></div>
+      <date-picker min-view="minutes"></date-picker>
     </div>
 
 
@@ -72,23 +100,23 @@
 
       <h5>year</h5>
 
-      <div date-picker="start" max-view="year"></div>
+      <date-picker max-view="year"></date-picker>
 
       <h5>month</h5>
 
-      <div date-picker="start" max-view="month"></div>
+      <date-picker max-view="month"></date-picker>
 
       <h5>date</h5>
 
-      <div date-picker="start" max-view="date"></div>
+      <date-picker max-view="date"></date-picker>
 
       <h5>hours</h5>
 
-      <div date-picker="start" max-view="hours"></div>
+      <date-picker max-view="hours"></date-picker>
 
       <h5>maxutes</h5>
 
-      <div date-picker="start" max-view="minutes"></div>
+      <date-picker max-view="minutes"></date-picker>
     </div>
 
     <div>
@@ -96,11 +124,11 @@
 
       <h5>time</h5>
 
-      <div date-picker="start" max-view="hours" min-view="minutes"></div>
+      <date-picker max-view="hours" min-view="minutes"></date-picker>
 
       <h5>date</h5>
 
-      <div date-picker="start" max-view="year" min-view="date"></div>
+      <date-picker max-view="year" min-view="date"></date-picker>
 
     </div>
 
@@ -164,9 +192,13 @@
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.6.0/ui-bootstrap-tpls.min.js"></script>
 <!-- build:js module.min.js -->
-<script src="scripts/datePicker.js"></script>
+<script src="scripts/datePickerApp.js"></script>
+<script src="scripts/directives/datePicker.js"></script>
 <script src="scripts/datePickerUtils.js"></script>
-<script src="scripts/dateRange.js"></script>
+<script src="scripts/directives/dateRange.js"></script>
+<script src="scripts/directives/datePickerCalendar.js"></script>
+<script src="scripts/directives/calendarPeriod.js"></script>
+<script src="scripts/constant/displayConfig.js"></script>
 <script src="scripts/input.js"></script>
 <!-- endbuild -->
 <script>

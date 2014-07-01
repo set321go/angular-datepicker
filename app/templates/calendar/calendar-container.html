@@ -1,0 +1,6 @@
+<div class="calendar-container">
+  <span class="calendar-title">{{getMonthName(baseDate.getMonth())}}</span>
+  <div class="calendar-row row-fluid" ng-repeat="row in rows">
+    <calendar-period class="calendar-period" ng-class-even="'calendar-row-even'" ng-class-odd="'calendar-row-odd'" date="date" ng-repeat="date in row"></calendar-period>
+  </div>
+</div>

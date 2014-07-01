@@ -1,8 +1,6 @@
 'use strict';
 
-var Module = angular.module('datePicker');
-
-Module.directive('dateRange', function () {
+angular.module('datePicker').directive('dateRange', function () {
   return {
     templateUrl: 'templates/daterange.html',
     scope: {

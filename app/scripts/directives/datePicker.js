@@ -1,36 +1,13 @@
 'use strict';
 
-var Module = angular.module('datePicker', []);
-
-Module.constant('datePickerConfig', {
-  template: 'templates/datepicker.html',
-  view: 'month',
-  views: ['year', 'month', 'date', 'hours', 'minutes'],
-  step: 5
-});
-
-Module.filter('time',function () {
-  function format(date){
-    return ('0' + date.getHours()).slice(-2) + ':' + ('0' + date.getMinutes()).slice(-2);
-  }
-
-  return function (date) {
-    if (!(date instanceof Date)) {
-      date = new Date(date);
-      if (isNaN(date.getTime())) {
-        return undefined;
-      }
-    }
-    return format(date);
-  };
-});
-
-Module.directive('datePicker', ['datePickerConfig', 'datePickerUtils', function datePickerDirective(datePickerConfig, datePickerUtils) {
+angular.module('datePicker')
+  .directive('datePicker', ['datePickerConfig', 'datePickerUtils', function(datePickerConfig, datePickerUtils) {
 
   //noinspection JSUnusedLocalSymbols
   return {
     // this is a bug ?
-    template: '<div ng-include="template"></div>',
+    templateUrl: 'templates/datepicker.html',
+    restrict : 'E',
     scope: {
       model: '=datePicker',
       after: '=?',
@@ -42,7 +19,6 @@ Module.directive('datePicker', ['datePickerConfig', 'datePickerUtils', function 
       scope.views = datePickerConfig.views.concat();
       scope.view = attrs.view || datePickerConfig.view;
       scope.now = new Date();
-      scope.template = attrs.template || datePickerConfig.template;
 
       var step = parseInt(attrs.step || datePickerConfig.step, 10);
       var partial = !!attrs.partial;
